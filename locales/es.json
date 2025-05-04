@@ -37,7 +37,9 @@
     "clientSpace": "Espacio del cliente",
     "accessToSpace": "Acceder al espacio:",
     "end": "Fin",
-    "confirm": "Confirmar"
+    "confirm": "Confirmar",
+    "accept": "Aceptar",
+    "reject": "Rechazar"
   },
   "navigation": {
     "app_client": "Tablero",
@@ -418,6 +420,7 @@
     "checkBackLater": "Vuelva más tarde para nuevas oportunidades de entrega",
     "switchToClientAccount": "Cambiar a cuenta de cliente",
     "by": "Por",
+    "notificationsDescription": "Recibirá notificaciones sobre nuevas entregas, mensajes y actualizaciones de estado aquí.",
     "partialDelivery": "Entrega parcial",
     "fullDelivery": "Entrega completa",
     "partialUntil": "Parcial hasta",

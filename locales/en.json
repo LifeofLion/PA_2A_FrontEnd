@@ -38,7 +38,9 @@
     "accessToSpace": "Access space:",
     "end": "End",
     "confirm": "Confirm",
-    "add": "Add"
+    "add": "Add",
+    "accept": "Accept",
+    "reject": "Reject"
   },
   "navigation": {
     "app_client": "Dashboard",
@@ -418,6 +420,7 @@
     "checkBackLater": "Check back later for new delivery opportunities",
     "switchToClientAccount": "Switch to client account",
     "by": "By",
+    "notificationsDescription": "You will receive notifications about deliveries, that you can accept or reject here.",
     "partialDelivery": "Partial delivery",
     "fullDelivery": "Full delivery",
     "partialUntil": "Partial until",

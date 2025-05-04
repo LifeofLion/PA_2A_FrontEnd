@@ -42,7 +42,7 @@ export default function DeliverymanEditAccount() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="bg-white p-4 flex justify-between items-center shadow-sm">
-        <Link href="/app_deliveryman/dashboard" className="flex items-center">
+        <Link href="/app_deliveryman" className="flex items-center">
           <Image src="/logo.png" alt="EcoDeli" width={120} height={40} className="h-auto" />
         </Link>
 
@@ -54,7 +54,7 @@ export default function DeliverymanEditAccount() {
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
         <div className="mb-6">
-          <Link href="/app_deliveryman/dashboard" className="text-green-500 hover:underline flex items-center">
+          <Link href="/app_deliveryman" className="text-green-500 hover:underline flex items-center">
             <ChevronDown className="h-4 w-4 mr-1 rotate-90" />
             {t("navigation.backToApp_Client")}
           </Link>
