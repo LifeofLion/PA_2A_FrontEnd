@@ -176,7 +176,9 @@
     "title": "Titre de votre liste",
     "shopppingListItems": "Articles de la liste de courses",
     "listPrice": "Prix pour la livraison et la liste de courses",
-    "shoppingList": "Liste de courses"
+    "shoppingList": "Liste de courses",
+    "selectDeliveryDate": "Sélectionner la date de livraison",
+    "continueToDeliveryDate": "Continuer vers la date de livraison"
   },
   "payments": {
     "yourPayments": "Vos paiements",

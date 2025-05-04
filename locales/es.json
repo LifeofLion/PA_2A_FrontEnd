@@ -176,7 +176,9 @@
     "title": "Título de tu lista",
     "shopppingListItems": "Artículos de la lista de compras",
     "listPrice": "Precio para la entrega y la lista de compras",
-    "shoppingList": "Lista de compras"
+    "shoppingList": "Lista de compras",
+    "selectDeliveryDate": "Seleccione la fecha de entrega",
+    "continueToDeliveryDate": "Continuar a la fecha de entrega"
   },
   "payments": {
     "yourPayments": "Sus pagos",

@@ -16,7 +16,7 @@ interface AddressSuggestion {
 export default function CreateAnnouncementPage() {
   const { t } = useLanguage()
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [step, setStep] = useState(1) // Étape 1: Nombre de colis, Étape 2: Adresses, Étape 3: Détails des colis
+  const [step, setStep] = useState(1) // Étape 1: Nombre de colis, Étape 2: Adresses, Étape 3: Date de livraison, Étape 4: Contenu des colis
   const [packageCount, setPackageCount] = useState(1)
   const [currentPackage, setCurrentPackage] = useState(1)
 
@@ -31,6 +31,9 @@ export default function CreateAnnouncementPage() {
   const [startingType, setStartingType] = useState<'address' | 'box'>('address')
   const [startingAddress, setStartingAddress] = useState("")
   const [startingBox, setStartingBox] = useState("")
+
+  // État pour la date de livraison
+  const [deliveryDate, setDeliveryDate] = useState("")
 
   // Refs pour les dropdowns
   const startingSuggestionsRef = useRef<HTMLDivElement>(null)
@@ -160,6 +163,9 @@ export default function CreateAnnouncementPage() {
     formData.append("startingAddress", startingAddress)
     formData.append("destinationAddress", destinationAddress)
 
+    // Ajouter la date de livraison
+    formData.append("deliveryDate", deliveryDate)
+
     // Ajouter les images
     packages.forEach((pkg, index) => {
       if (pkg.image) {
@@ -211,12 +217,24 @@ export default function CreateAnnouncementPage() {
     setStep(2)
   }
 
-  const proceedToPackageDetails = () => {
+  const proceedToDeliveryDateStep = () => {
     setStep(3)
+  }
+
+  const proceedToPackageDetails = () => {
+    setStep(4)
   }
 
   const goBackToPackageCount = () => {
     setStep(1)
+  }
+
+  const goBackToAddressStep = () => {
+    setStep(2)
+  }
+
+  const goBackToDeliveryDateStep = () => {
+    setStep(3)
   }
 
   const selectStartingAddress = (suggestion: AddressSuggestion) => {
@@ -432,7 +450,7 @@ export default function CreateAnnouncementPage() {
                   </button>
                   <button
                     type="button"
-                    onClick={proceedToPackageDetails}
+                    onClick={proceedToDeliveryDateStep}
                     className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
                     disabled={
                      (startingType === 'address'
@@ -440,15 +458,54 @@ export default function CreateAnnouncementPage() {
                          : !startingBox)
                    }
                   >
-                    {t("announcements.continueToDetails")}
+                    {t("announcements.continueToDeliveryDate")}
                   </button>
                 </div>
               </div>
             </div>
           )}
 
-          {/* Étape 3: Détails des colis */}
+          {/* Étape 3: Date de livraison */}
           {step === 3 && (
+            <div className="bg-white rounded-lg shadow-md p-6">
+              <h2 className="text-xl font-medium text-gray-800 mb-6">{t("announcements.deliveryDate")}</h2>
+
+              <div className="mb-6">
+                <label htmlFor="deliveryDate" className="block text-sm font-medium text-gray-700 mb-2">
+                  {t("announcements.selectDeliveryDate")}
+                </label>
+                <input
+                  type="date"
+                  id="deliveryDate"
+                  value={deliveryDate}
+                  onChange={(e) => setDeliveryDate(e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                  required
+                />
+              </div>
+
+              <div className="flex justify-between pt-4">
+                <button
+                  type="button"
+                  onClick={goBackToAddressStep}
+                  className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
+                >
+                  {t("common.back")}
+                </button>
+                <button
+                  type="button"
+                  onClick={proceedToPackageDetails}
+                  className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                  disabled={!deliveryDate}
+                >
+                  {t("announcements.continueToDetails")}
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* Étape 4: Contenu des colis */}
+          {step === 4 && (
             <div className="bg-white rounded-lg shadow-md p-6">
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-xl font-medium text-gray-800">
@@ -598,7 +655,7 @@ export default function CreateAnnouncementPage() {
                 <div className="flex justify-between space-x-4 mt-8">
                   <button
                     type="button"
-                    onClick={() => setStep(2)}
+                    onClick={goBackToDeliveryDateStep}
                     className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
                   >
                     {t("common.back")}
