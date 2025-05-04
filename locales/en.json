@@ -176,7 +176,9 @@
     "title": "Title of your list",
     "shopppingListItems": "Shopping list items",
     "listPrice": "Price for delivery and shopping list",
-    "shoppingList": "Shopping list"
+    "shoppingList": "Shopping list",
+    "selectDeliveryDate": "Select a delivery date",
+    "continueToDeliveryDate": "Continue to delivery date"
   },
   "payments": {
     "yourPayments": "Your payments",
