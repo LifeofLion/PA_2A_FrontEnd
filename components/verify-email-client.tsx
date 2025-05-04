@@ -91,11 +91,12 @@ export default function VerifyEmailClient() {
       return
     }
 
+    
     const code_valid = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/codes-temporaire/check_code`, {
+      `${process.env.NEXT_PUBLIC_API_URL}/codes-temporaire/check-code`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ user_info: sessionStorage.getItem("signupInfo"), code: verificationCode }),
+        body: JSON.stringify({ user_info: JSON.stringify(formData), code: verificationCode }),
         credentials: "include",
       })
 
@@ -115,7 +116,10 @@ export default function VerifyEmailClient() {
             first_name: formData.firstname,
             last_name: formData.name,
             email: formData.email,
-            address: formData.address + ", " + formData.postalCode + " " + formData.city,
+            address: formData.address,
+            city: formData.city,
+            postalCode: formData.postalCode,
+            country: formData.country,
             password: formData.password,
             confirm_password: formData.confirmPassword,
             phone_number: formData.phone,
@@ -127,13 +131,13 @@ export default function VerifyEmailClient() {
       const data = await res.json()
 
       if (!res.ok) {
+        console.log(data)
         const msg = (data as any).error_message || t("auth.invalidVerificationCode")
         throw new Error(msg)
       }
       
       sessionStorage.setItem("authToken", data.token)
 
-      console.log("Code verified:", verificationCode)
       router.push("/verification-success")
     } catch (err) {
       setError(t("auth.invalidVerificationCode"))
@@ -156,11 +160,11 @@ export default function VerifyEmailClient() {
 
     try {
       const resetRes = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/codes-temporaire/reset_code`,
+        `${process.env.NEXT_PUBLIC_API_URL}/codes-temporaire/reset-code`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ user_info: formData }),
+          body: JSON.stringify({ user_info: JSON.stringify(formData) }),
           credentials: "include",
         }
       )

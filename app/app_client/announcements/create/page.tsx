@@ -64,7 +64,6 @@ export default function CreateAnnouncementPage() {
     }
   }, [])
 
-  // Fonction pour rechercher des adresses avec l'API
   const searchAddresses = async (query: string, isStarting: boolean) => {
     if (query.length < 3) {
       if (isStarting) {
@@ -84,7 +83,6 @@ export default function CreateAnnouncementPage() {
         setIsLoadingDestinationSuggestions(true)
       }
 
-      // Appel à l'API d'adresses
       const response = await fetch(`https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(query)}&limit=5`)
       const data = await response.json()
 
