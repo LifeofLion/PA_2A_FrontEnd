@@ -26,7 +26,7 @@ export default function LegalNoticePage() {
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
         <div className="bg-white rounded-lg shadow-md p-6">
-          <h1 className="text-2xl font-bold text-green-500 mb-6">{t("legalNotice.title")}</h1>
+          <h1 className="text-2xl font-bold text-green-50 mb-6">{t("legalNotice.title")}</h1>
 
           <section className="mb-6">
             <h2 className="text-xl font-semibold text-gray-800 mb-2">{t("legalNotice.companyInfo")}</h2>

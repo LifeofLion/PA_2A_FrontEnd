@@ -40,7 +40,8 @@
     "confirm": "Confirmer",
     "add": "Ajouter",
     "accept": "Accepter",
-    "reject": "Rejeter"
+    "reject": "Rejeter",
+    "appClient": "Accès à votre espace client"
   },
   "navigation": {
     "app_client": "Tableau de bord",
@@ -311,6 +312,7 @@
   },
   "auth": {
     "createAccount": "Créer un compte",
+    "createAccountDescription": "Inscrivez-vous pour accéder à toutes les fonctionnalités d'EcoDeli. C'est rapide et facile !",
     "createAccountAs": "Créer un compte en tant que",
     "alreadyHaveAccount": "Vous avez déjà un compte ?",
     "dontHaveAccount": "Vous n'avez pas de compte ?",
@@ -362,7 +364,34 @@
     "newPassword": "Nouveau mot de passe",
     "confirmNewPassword": "Confirmer le nouveau mot de passe",
     "editMembership": "Modifier votre abonnement",
-    "editJustificative": "Modifier vos pièces justificatives"
+    "editJustificative": "Modifier vos pièces justificatives",
+    "enterName": "Entrez votre nom",
+    "enterFirstName": "Entrez votre prénom",
+    "enterDateOfBirth": "Entrez votre date de naissance",
+    "accountTypes": "Types de compte",
+    "multipleAccountTypesSelected": "Plusieurs types de compte sélectionnés",
+    "additionalDocumentsRequired": "Note : Des documents supplémentaires seront requis pour les comptes professionnels sélectionnés.",
+    "email": "Adresse e-mail",
+    "enterEmail": "Entrez votre adresse e-mail",
+    "phone": "Numéro de téléphone",
+    "enterPhone": "Entrez votre numéro de téléphone",
+    "enterPassword": "Entrez votre mot de passe",
+    "confirmPasswordPlaceholder": "Confirmez votre mot de passe",
+    "enterAddress": "Entrez votre adresse",
+    "enterCity": "Entrez votre ville",
+    "enterPostalCode": "Entrez votre code postal",
+    "login": "Connexion",
+    "allFieldsRequired": "Tous les champs doivent être renseignés.",
+    "passwordRequirements": "Le mot de passe doit comporter au moins 12 caractères, inclure une lettre minuscule, une lettre majuscule, un chiffre et un caractère spécial.",
+    "passwordsDoNotMatch": "Les mots de passe ne correspondent pas.",
+    "verificationEmailSubject": "Votre code de vérification EcoDeli",
+    "welcomeToEcoDeli": "Bienvenue sur EcoDeli 👋",
+    "thankYouForSigningUp": "Merci de vous être inscrit !",
+    "client": "Client",
+    "deliveryMan": "Livreur",
+    "shopkeeper": "Commerçant",
+    "serviceProvider": "Prestataire de service",
+    "submitting": "Soumission en cours..."
   },
   "errors": {
     "somethingWentWrong": "Une erreur est survenue !",
@@ -420,6 +449,9 @@
     "checkBackLater": "Revenez plus tard pour de nouvelles opportunités de livraison",
     "switchToClientAccount": "Passer au compte client",
     "by": "Par",
+    "pendingThanksTitle": "Merci ! Votre demande pour un compte de livreur est en attente.",
+    "pendingMessageLine1": "Nous avons bien reçu votre demande de compte livreur !!",
+    "pendingMessageLine2": "Notre équipe de vérification examinera votre demande et vous informera dès que possible par e-mail sous 24 heures.",
     "notificationsDescription": "Ici vous trouverez toutes les notifications concernant des annonces à accepter ou non.",
     "partialDelivery": "Livraison partielle",
     "fullDelivery": "Livraison complète",
@@ -437,6 +469,11 @@
     "enterCode": "Entrez le code de livraison",
     "enterCodeDescription": "Entrez le code de livraison fourni par le client pour confirmer la livraison",
     "validateCode": "Valider le code",
+    "uploadIdAndLicence": "Télécharger votre pièce d'identité et votre permis",
+    "idCard": "Carte d'identité",
+    "uploadIdCard": "Télécharger votre carte d'identité en .pdf",
+    "drivingLicence": "Permis de conduire",
+    "uploadDrivingLicence": "Télécharger votre permis de conduire en .pdf",
     "deliveriess": {
       "image": "Image",
       "announceName": "Nom de l'annonce",
@@ -565,7 +602,10 @@
     "siretNumber": "Numéro SIRET",
     "sirenNumber": "Numéro SIREN",
     "enterSirenNumber": "Entrez votre numéro SIREN",
-    "editYourJustificativePieces": "Modifier vos pièces justificatives"
+    "editYourJustificativePieces": "Modifier vos pièces justificatives",
+    "pendingThanksTitle": "Merci ! Votre demande de compte commerçant est en attente.",
+    "pendingMessageLine1": "Nous avons bien reçu votre demande de compte commerçant !!",
+    "pendingMessageLine2": "Notre équipe de vérification examinera votre demande et vous informera dès que possible par e-mail sous 24 heures."
   },
   "contracts": {
     "contract": "Contrat",
@@ -598,5 +638,23 @@
     "newValue": "Nouvelle valeur (e.g. 'Bienvenue sur EcoDeli')",
     "addTranslation": "Ajouter une traduction",
     "delete": "Supprimer"
+  },
+  "legalNotice": {
+    "title": "Mentions légales",
+    "companyInfo": "Informations sur l'entreprise",
+    "companyName": "Nom de l'entreprise",
+    "address": "Adresse",
+    "phone": "Téléphone",
+    "email": "Adresse email",
+    "hostingInfo": "Hébergement du site",
+    "hostingProvider": "Hébergeur",
+    "hostingAddress": "Adresse de l'hébergeur",
+    "hostingPhone": "Téléphone de l'hébergeur",
+    "intellectualProperty": "Propriété intellectuelle",
+    "intellectualPropertyText": "L’ensemble des contenus présents sur ce site (textes, images, graphismes, logo, icônes, etc.) sont la propriété exclusive d’EcoDeli, sauf mention contraire, et sont protégés par les lois françaises et internationales relatives à la propriété intellectuelle. Toute reproduction, distribution, modification, adaptation, retransmission ou publication, même partielle, est strictement interdite sans l’accord écrit préalable de EcoDeli.",
+    "liability": "Responsabilité",
+    "liabilityText": "EcoDeli s’efforce d’assurer au mieux de ses possibilités l’exactitude et la mise à jour des informations diffusées sur ce site. Toutefois, elle ne saurait être tenue responsable des omissions, inexactitudes ou carences dans la mise à jour, qu’elles soient de son fait ou du fait des tiers partenaires. L’utilisateur reconnaît utiliser ces informations sous sa responsabilité exclusive.",
+    "contactUs": "Nous contacter",
+    "contactText": "Pour toute question concernant ces mentions légales, vous pouvez nous contacter par email à l’adresse suivante : contact@ecodeli.com."
   }
 }
