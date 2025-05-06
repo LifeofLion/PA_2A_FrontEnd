@@ -179,7 +179,7 @@ export default function DeliverymanDashboard() {
 
                   <div className="border-t border-gray-100 my-1"></div>
 
-                  <div className="px-4 py-1 text-xs text-gray-500">{t("common.registerAs")}</div>
+                  <div className="px-4 py-1 text-xs text-gray-500">{t("common.accessToSpace")}</div>
 
                   <Link href="/register/shopkeeper" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
                     {t("common.shopkeeper")}
@@ -288,7 +288,7 @@ export default function DeliverymanDashboard() {
                         id: "#ECO-12345",
                         customer: "John Doe",
                         address: "123 Main St, Paris",
-                        status: "Delivered",
+                        status: "delivered",
                         statusClass: "bg-green-100 text-green-800",
                         date: "2025-04-01",
                       },
@@ -296,7 +296,7 @@ export default function DeliverymanDashboard() {
                         id: "#ECO-23456",
                         customer: "Jane Smith",
                         address: "456 Oak Ave, Lyon",
-                        status: "In Transit",
+                        status: "inTransit",
                         statusClass: "bg-yellow-100 text-yellow-800",
                         date: "2025-04-02",
                       },
@@ -304,7 +304,7 @@ export default function DeliverymanDashboard() {
                         id: "#ECO-34567",
                         customer: "Robert Johnson",
                         address: "789 Pine Rd, Marseille",
-                        status: "Pending",
+                        status: "pending",
                         statusClass: "bg-blue-100 text-blue-800",
                         date: "2025-04-03",
                       },
@@ -312,7 +312,7 @@ export default function DeliverymanDashboard() {
                         id: "#ECO-45678",
                         customer: "Emily Davis",
                         address: "321 Cedar Ln, Bordeaux",
-                        status: "Delivered",
+                        status: "delivered",
                         statusClass: "bg-green-100 text-green-800",
                         date: "2025-04-04",
                       },
@@ -320,7 +320,7 @@ export default function DeliverymanDashboard() {
                         id: "#ECO-56789",
                         customer: "Michael Brown",
                         address: "654 Elm Blvd, Nice",
-                        status: "In Transit",
+                        status: "inTransit",
                         statusClass: "bg-yellow-100 text-yellow-800",
                         date: "2025-04-05",
                       },
@@ -333,7 +333,7 @@ export default function DeliverymanDashboard() {
                           <span
                             className={`inline-flex rounded-full px-2 text-xs font-semibold leading-5 ${item.statusClass}`}
                           >
-                            {item.status}
+                            {t(`deliveryman.deliveriess.${item.status}`)}
                           </span>
                         </td>
                         <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">

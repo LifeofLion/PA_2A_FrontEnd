@@ -115,7 +115,7 @@ export default function SignupPage() {
       }
       const { code: verificationCode } = await genRes.json()
 
-      await fetch(process.env.NEXT_PUBLIC_API_URL + "/send-email", {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/send-email`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

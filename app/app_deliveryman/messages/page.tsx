@@ -499,7 +499,7 @@ interface Message {
 
                   <div className="border-t border-gray-100 my-1"></div>
 
-                  <div className="px-4 py-1 text-xs text-gray-500">{t("common.registerAs")}</div>
+                  <div className="px-4 py-1 text-xs text-gray-500">{t("common.accessToSpace")}</div>
 
                   <Link href="/register/shopkeeper" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
                     {t("common.shopkeeper")}
