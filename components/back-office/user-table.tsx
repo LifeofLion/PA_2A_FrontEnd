@@ -1,62 +1,78 @@
-"use client"
+"use client";
 
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Button } from "@/components/ui/button"
-import { ResponsiveTableWrapper } from "@/components/responsive-table-wrapper"
+import React from "react";
+import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/components/language-context";
 
-interface UserData {
-  id: number
-  name: string
-  firstName: string
-  email: string
-  phone: string
-  status?: string
-  statusColor?: string
+interface User {
+  id: number;
+  name: string;
+  firstName: string;
+  email: string;
+  phone: string;
+  status: string;
+  statusColor: string;
+  justificatives: string[];
 }
 
 interface UserTableProps {
-  data: UserData[]
-  showJustificative: boolean
+  data: User[];
+  showJustificative: boolean;
+  onStatusClick: (user: User) => void;
+  onDelete: (userId: number) => void;
 }
 
-export function UserTable({ data, showJustificative }: UserTableProps) {
+export function UserTable({ data, showJustificative, onStatusClick, onDelete }: UserTableProps) {
   return (
-    <ResponsiveTableWrapper>
-      <Table>
-        <TableHeader>
-          <TableRow className="bg-white">
-            <TableHead className="font-medium">Name</TableHead>
-            <TableHead className="font-medium">First name</TableHead>
-            <TableHead className="font-medium">Email</TableHead>
-            <TableHead className="font-medium">Phone number</TableHead>
-            {showJustificative && <TableHead className="font-medium">Justificative pieces</TableHead>}
-            <TableHead className="font-medium">Action</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
+    <div className="overflow-x-auto">
+      <table className="min-w-full divide-y divide-gray-200">
+        <thead className="bg-gray-50">
+          <tr>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nom</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Prénom</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Téléphone</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Statut</th>
+            {showJustificative && (
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Justificatifs</th>
+            )}
+            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+          </tr>
+        </thead>
+        <tbody className="bg-white divide-y divide-gray-200">
           {data.map((user) => (
-            <TableRow key={user.id}>
-              <TableCell className="font-medium">{user.name}</TableCell>
-              <TableCell>{user.firstName}</TableCell>
-              <TableCell>{user.email}</TableCell>
-              <TableCell>{user.phone}</TableCell>
-              {showJustificative && (
-                <TableCell>
-                  {user.status && (
-                    <span className={`px-3 py-1 rounded-md text-sm ${user.statusColor}`}>{user.status}</span>
-                  )}
-                </TableCell>
-              )}
-              <TableCell>
-                <Button variant="destructive" size="sm" className="bg-[#E57373] hover:bg-[#ef5350]">
-                  Delete
+            <tr key={user.id}>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{user.name}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{user.firstName}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{user.email}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{user.phone}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm">
+                <Button
+                  variant="ghost"
+                  className={`px-3 py-1 rounded-full ${user.statusColor}`}
+                  onClick={() => onStatusClick(user)}
+                >
+                  {user.status}
                 </Button>
-              </TableCell>
-            </TableRow>
+              </td>
+              {showJustificative && (
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                  {user.justificatives.length} document(s)
+                </td>
+              )}
+              <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
+                <Button
+                  variant="destructive"
+                  size="sm"
+                  onClick={() => onDelete(user.id)}
+                >
+                  Supprimer
+                </Button>
+              </td>
+            </tr>
           ))}
-        </TableBody>
-      </Table>
-    </ResponsiveTableWrapper>
-  )
+        </tbody>
+      </table>
+    </div>
+  );
 }
-

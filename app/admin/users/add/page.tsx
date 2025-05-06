@@ -1,6 +1,6 @@
 "use client"
 
-import { AddAdministratorContent } from "@/components/add-administrator-content"
+import { AddAdministratorContent } from "@/components/back-office/add-users-content"
 
 import { useState } from "react"
 import Link from "next/link"

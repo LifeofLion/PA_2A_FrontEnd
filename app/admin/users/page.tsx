@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { UsersContent } from "@/components/users-content"
+import { UsersContent } from "@/components/back-office/users-content"
 
 import { useState } from "react"
 import Link from "next/link"

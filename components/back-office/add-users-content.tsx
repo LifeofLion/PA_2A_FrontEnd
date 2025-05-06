@@ -13,10 +13,9 @@ import { cn } from "@/lib/utils"
 import { Calendar } from "@/components/ui/calendar"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 
-export function AddAdministratorContent() {
+export function AddUsersContent() {
   const [isLoading, setIsLoading] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
-  issi
   const [date, setDate] = useState<Date>()
 
   const handleSubmit = (e: React.FormEvent) => {
