@@ -1,6 +1,6 @@
 "use client"
 
-import { ServiceTable } from "@/components/service-table"
+import { ServiceTable } from "@/components/back-office/service-table"
 
 export function ServicesContent() {
   // Données fictives pour les services

@@ -6,7 +6,7 @@ import { UserTable } from "@/components/back-office/user-table"
 import { Plus } from "lucide-react"
 import Link from "next/link"
 import { useLanguage } from "@/components/language-context"
-import {languageSelector} from "@/components/language-selector"
+import LanguageSelector from "@/components/language-selector"
 
 export function UsersContent() {
   const { t } = useLanguage()

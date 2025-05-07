@@ -41,7 +41,7 @@ export default function ComplaintsPage() {
         <div className="flex h-full flex-col">
           {/* Logo */}
           <div className="flex h-16 items-center border-b px-6">
-            <Link href="/app_deliveryman" className="flex items-center">
+            <Link href="/admin" className="flex items-center">
               <Image src="/logo.png" alt="EcoDeli" width={120} height={40} className="h-auto" />
             </Link>
           </div>
@@ -51,56 +51,56 @@ export default function ComplaintsPage() {
             <ul className="space-y-1">
               <li>
                 <Link
-                  href="/app_deliveryman"
+                  href="/admin"
                   className="flex items-center rounded-md bg-green-50 px-4 py-3 text-white"
                 >
                   <BarChart3 className="mr-3 h-5 w-5" />
-                  <span>{t("deliveryman.dashboard")}</span>
+                  <span>{t("admin.dashboard")}</span>
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/app_deliveryman/announcements"
+                  href="/admin/users"
                   className="flex items-center rounded-md px-4 py-3 text-gray-700 hover:bg-gray-100"
                 >
-                  <PartyPopper className="mr-3 h-5 w-5" />
-                  <span>{t("deliveryman.announcements")}</span>
+                  <UserRoundCog className="mr-3 h-5 w-5" />
+                  <span>{t("admin.users")}</span>
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/app_deliveryman/deliveries"
+                  href="/admin/services"
                   className="flex items-center rounded-md px-4 py-3 text-gray-700 hover:bg-gray-100"
                 >
-                  <Package className="mr-3 h-5 w-5" />
-                  <span>{t("deliveryman.deliveries")}</span>
+                  <Tags className="mr-3 h-5 w-5" />
+                  <span>{t("admin.services")}</span>
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/app_deliveryman/notifications"
+                  href="/admin/translations"
                   className="flex items-center rounded-md px-4 py-3 text-gray-700 hover:bg-gray-100"
                 >
-                  <BellRing className="mr-3 h-5 w-5" />
-                  <span>{t("deliveryman.notifications")}</span>
+                  <Languages className="mr-3 h-5 w-5" />
+                  <span>{t("admin.translations")}</span>
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/app_deliveryman/messages"
+                  href="/admin/complaints"
                   className="flex items-center rounded-md px-4 py-3 text-gray-700 hover:bg-gray-100"
                 >
-                  <MessageSquare className="mr-3 h-5 w-5" />
-                  <span>{t("deliveryman.messages")}</span>
+                  <Angry className="mr-3 h-5 w-5" />
+                  <span>{t("admin.complaints")}</span>
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/app_deliveryman/payments"
+                  href="/admin/finance"
                   className="flex items-center rounded-md px-4 py-3 text-gray-700 hover:bg-gray-100"
                 >
-                  <CreditCard className="mr-3 h-5 w-5" />
-                  <span>{t("deliveryman.payments")}</span>
+                  <BadgeDollarSign className="mr-3 h-5 w-5" />
+                  <span>{t("admin.finance")}</span>
                 </Link>
               </li>
             </ul>

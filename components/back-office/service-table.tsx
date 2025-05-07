@@ -2,7 +2,7 @@
 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
-import { ResponsiveTableWrapper } from "@/components/responsive-table-wrapper"
+import { ResponsiveTableWrapper } from "@/components/back-office/responsive-table-wrapper"
 import Image from "next/image"
 import { Star, StarHalf } from "lucide-react"
 
