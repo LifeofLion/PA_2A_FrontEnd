@@ -137,7 +137,7 @@ export default function TrackingDetailClient({ id }: { id: string }) {
           <div className="container mx-auto px-4 py-3">
             <Link href="/">
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo-NEF7Y3VVan4gaPKz0Ke4Q9FTKCgie4.png"
+                src="/logo.png"
                 alt="EcoDeli Logo"
                 width={120}
                 height={40}
@@ -169,7 +169,7 @@ export default function TrackingDetailClient({ id }: { id: string }) {
         <div className="container mx-auto px-4 py-3">
           <Link href="/">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo-NEF7Y3VVan4gaPKz0Ke4Q9FTKCgie4.png"
+              src="/logo.png"
               alt="EcoDeli Logo"
               width={120}
               height={40}
