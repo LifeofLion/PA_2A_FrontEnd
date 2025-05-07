@@ -11,7 +11,17 @@ import { useRouter } from "next/navigation"
 export default function AnnouncementsPage() {
   const { t } = useLanguage()
   const router = useRouter()
-  const [announcements, setAnnouncements] = useState([
+  const [announcements, setAnnouncements] = useState<Array<{
+    id: number
+    title: string
+    image: string
+    deliveryAddress: string
+    price: string
+    deliveryDate: string
+    amount: number
+    storageBox: string
+    shoppingList: string | null
+  }>>([
     {
       id: 1,
       title: "Pair of running shoes",
@@ -21,6 +31,7 @@ export default function AnnouncementsPage() {
       deliveryDate: "15th May - 30th May",
       amount: 1,
       storageBox: "Storage box 1",
+      shoppingList: null,
     },
     {
       id: 2,
@@ -31,6 +42,7 @@ export default function AnnouncementsPage() {
       deliveryDate: "3rd June - 17th June",
       amount: 1,
       storageBox: "Storage box 1",
+      shoppingList: null,
     },
   ])
 
