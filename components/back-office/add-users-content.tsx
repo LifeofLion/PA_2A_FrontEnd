@@ -7,16 +7,20 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { CalendarIcon } from "lucide-react"
+import { CalendarIcon, ChevronDown } from "lucide-react"
 import { format } from "date-fns"
 import { cn } from "@/lib/utils"
 import { Calendar } from "@/components/ui/calendar"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import Link from "next/link"
+import { useLanguage } from "@/components/language-context"
 
 export function AddUsersContent() {
+  const { t } = useLanguage()
   const [isLoading, setIsLoading] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [date, setDate] = useState<Date>()
+
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -32,7 +36,14 @@ export function AddUsersContent() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold">Add an administrator</h1>
+      <h1 className="text-2xl font-bold">Add a new account</h1>
+
+      <div className="mb-6">
+          <Link href="/admin/users" className="text-green-50 hover:underline flex items-center">
+            <ChevronDown className="h-4 w-4 mr-1 rotate-90" />
+            {t("common.back")}
+          </Link>
+        </div>
 
       <div className="bg-white rounded-lg p-6 shadow-sm">
         <h2 className="text-xl font-semibold text-center mb-8">Create an Account</h2>
@@ -117,9 +128,19 @@ export function AddUsersContent() {
 
             <div>
               <Label htmlFor="account-type" className="mb-2 block">
-                Type of account
+              Type of account
               </Label>
-              <Input id="account-type" value="Administrator" readOnly className="bg-gray-50" />
+              <Select>
+              <SelectTrigger id="account-type" className="w-full">
+                <SelectValue placeholder="Select account type" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="client">Client</SelectItem>
+                <SelectItem value="livreur">Livreur</SelectItem>
+                <SelectItem value="commercant">Commerçant</SelectItem>
+                <SelectItem value="prestataire">Prestataire de service</SelectItem>
+              </SelectContent>
+              </Select>
             </div>
 
             <div>

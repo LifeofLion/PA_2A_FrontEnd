@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import { ContractsTable } from "@/components/back-office/contracts-table"
-import { FinanceChart } from "@/components/back-office/finance-chart"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 export function FinanceContent() {
@@ -62,22 +61,6 @@ export function FinanceContent() {
         <div>
           <h2 className="text-xl font-semibold mb-4">Shopkeepers contracts</h2>
           <ContractsTable data={shopkeepersContractsData} />
-        </div>
-
-        <div className="bg-white rounded-lg p-6 shadow-sm">
-          <h2 className="text-xl font-semibold mb-6">Numbers of the month</h2>
-          <FinanceChart />
-
-          <div className="flex items-center justify-center gap-8 mt-4">
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-[#F8A097]"></div>
-              <span className="text-sm text-gray-600">Contract</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-[#D8B4FE]"></div>
-              <span className="text-sm text-gray-600">Complaints</span>
-            </div>
-          </div>
         </div>
       </div>
     </div>

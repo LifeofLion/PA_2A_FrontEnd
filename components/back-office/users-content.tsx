@@ -6,11 +6,11 @@ import { UserTable } from "@/components/back-office/user-table"
 import { Plus } from "lucide-react"
 import Link from "next/link"
 import { useLanguage } from "@/components/language-context"
-import LanguageSelector from "@/components/language-selector"
+// Removed unused import
 
 export function UsersContent() {
   const { t } = useLanguage()
-  const [selectedUser, setSelectedUser] = useState<any>(null)
+  const [selectedUser, setSelectedUser] = useState(null) // Removed unused variable type
   const [isModalOpen, setIsModalOpen] = useState(false)
   const modalRef = useRef<HTMLDivElement>(null)
 
@@ -85,7 +85,7 @@ export function UsersContent() {
 
   const handleDelete = (userId: number) => {
     if (window.confirm(t("users.confirmDelete"))) {
-      console.log(t("users.userDeleted", { id: userId }))
+      console.log(t("users.userDeleted") + `: ${userId}`)
       // Ici, ajoutez la logique pour supprimer l'utilisateur
     }
   }
@@ -112,10 +112,10 @@ export function UsersContent() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
         <h1 className="text-2xl font-bold">{t("users.title")}</h1>
-        <Link href="/users/add">
+        <Link href="/admin/users/add">
           <Button className="bg-[#8CD790] hover:bg-[#7ac57e] text-white">
             <Plus className="mr-2 h-4 w-4" />
-            {t("users.newAdministrator")}
+            {t("users.newAccount")}
           </Button>
         </Link>
       </div>
@@ -155,7 +155,7 @@ export function UsersContent() {
         <div>
           <h2 className="text-xl font-semibold mb-4">{t("users.users")}</h2>
           <UserTable
-            data={usersData}
+            data={usersData.map(user => ({ ...user, justificatives: [] }))}
             showJustificative={false} // Pas de justificatifs pour les utilisateurs
             onStatusClick={() => {}} // Pas de clic sur le statut
             onDelete={handleDelete}
@@ -165,7 +165,7 @@ export function UsersContent() {
         <div>
           <h2 className="text-xl font-semibold mb-4">{t("users.administrators")}</h2>
           <UserTable
-            data={administratorsData}
+            data={administratorsData.map(admin => ({ ...admin, justificatives: [] }))}
             showJustificative={false} // Pas de justificatifs pour les administrateurs
             onStatusClick={() => {}} // Pas de clic sur le statut
             onDelete={handleDelete}

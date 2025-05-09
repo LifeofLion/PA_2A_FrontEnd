@@ -5,7 +5,7 @@ import type React from "react"
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Calendar, Save, ChevronDown } from "lucide-react"
+import { Save, ChevronDown } from "lucide-react"
 import { useLanguage } from "@/components/language-context"
 import LanguageSelector from "@/components/language-selector"
 
@@ -42,7 +42,7 @@ export default function DeliverymanEditAccount() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="bg-white p-4 flex justify-between items-center shadow-sm">
-        <Link href="/app_deliveryman" className="flex items-center">
+        <Link href="/admin" className="flex items-center">
           <Image src="/logo.png" alt="EcoDeli" width={120} height={40} className="h-auto" />
         </Link>
 
@@ -54,7 +54,7 @@ export default function DeliverymanEditAccount() {
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
         <div className="mb-6">
-          <Link href="/app_deliveryman" className="text-green-500 hover:underline flex items-center">
+          <Link href="/admin" className="text-green-500 hover:underline flex items-center">
             <ChevronDown className="h-4 w-4 mr-1 rotate-90" />
             {t("navigation.backToApp_Client")}
           </Link>
@@ -195,7 +195,7 @@ export default function DeliverymanEditAccount() {
 
               <div className="flex justify-end space-x-3 pt-4">
                 <Link
-                  href="/app_deliveryman"
+                  href="/admin"
                   className="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors"
                 >
                   {t("common.cancel")}
@@ -223,15 +223,8 @@ export default function DeliverymanEditAccount() {
             <div className="mt-8 pt-6 border-t border-gray-200">
               <div className="flex justify-between items-center mb-4">
                 <h2 className="text-lg font-medium">{t("auth.changePassword")}</h2>
-                <Link href="/app_deliveryman/edit-account/edit-password" className="text-sm text-green-500 hover:underline">
+                <Link href="/admin/edit-account/edit-password" className="text-sm text-green-500 hover:underline">
                   {t("auth.changePassword")}
-                </Link>
-              </div>
-
-              <div className="flex justify-between items-center">
-                <h2 className="text-lg font-medium">{t("auth.editJustificative")}</h2>
-                <Link href="/app_deliveryman/edit-justificative" className="text-sm text-green-500 hover:underline">
-                  {t("auth.editJustificative")}
                 </Link>
               </div>
             </div>

@@ -12,14 +12,12 @@ import {
   ChevronDown,
   LogOut,
   Menu,
-  MessageSquare,
-  Package,
+  Angry,
+  UserRoundCog,
+  BadgeDollarSign,
+  Tags,
+  Languages,
   Edit,
-  CreditCard,
-  ChevronRight,
-  ArrowUp,
-  BellRing,
-  PartyPopper,
   User,
 } from "lucide-react"
 import { useLanguage } from "@/components/language-context"
@@ -51,7 +49,7 @@ export default function FinancePage() {
               <li>
                 <Link
                   href="/admin"
-                  className="flex items-center rounded-md bg-green-50 px-4 py-3 text-white"
+                  className="flex items-center rounded-md px-4 py-3 text-gray-700 hover:bg-gray-100"
                 >
                   <BarChart3 className="mr-3 h-5 w-5" />
                   <span>{t("admin.dashboard")}</span>
@@ -96,7 +94,7 @@ export default function FinancePage() {
               <li>
                 <Link
                   href="/admin/finance"
-                  className="flex items-center rounded-md px-4 py-3 text-gray-700 hover:bg-gray-100"
+                  className="flex items-center rounded-md bg-green-50 px-4 py-3 text-white"
                 >
                   <BadgeDollarSign className="mr-3 h-5 w-5" />
                   <span>{t("admin.finance")}</span>
@@ -137,7 +135,7 @@ export default function FinancePage() {
               {isUserMenuOpen && (
                 <div className="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-lg z-10 py-2 border border-gray-100">
                   <Link
-                    href="/app_deliveryman/edit-account"
+                    href="/admin/edit-account"
                     className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100"
                   >
                     <Edit className="h-4 w-4 mr-2" />
