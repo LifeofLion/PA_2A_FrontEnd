@@ -23,6 +23,7 @@ export default function TranslationsAdmin() {
   const [newKey, setNewKey] = useState("")
   const [newValue, setNewValue] = useState("")
   const [availableLocales, setAvailableLocales] = useState(["en", "fr", "es"])
+  
 
   useEffect(() => {
     const fetchTranslations = async () => {
