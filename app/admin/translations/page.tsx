@@ -15,15 +15,29 @@ export default function TranslationsAdmin() {
   const {t } = useLanguage()
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
-  const [activeLocale, setActiveLocale] = useState("en")
+  const [activeLocale, setActiveLocale] = useState("EN")
   const [translations, setTranslations] = useState<Record<string, any>>({})
   const [isLoading, setIsLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState("")
   const [isSaving, setIsSaving] = useState(false)
   const [newKey, setNewKey] = useState("")
   const [newValue, setNewValue] = useState("")
-  const [availableLocales, setAvailableLocales] = useState(["en", "fr", "es"])
-  
+  const [availableLocales, setAvailableLocales] = useState<string[]>([]);
+
+useEffect(() => {
+  const loadLocales = async () => {
+    try {
+      const res = await fetch("/api/translations", { cache: "no-store" });
+      if (!res.ok) throw new Error(`Status ${res.status}`);
+      const { locales } = await res.json();
+      setAvailableLocales(locales);
+    } catch (err) {
+      console.error("Failed to load locales:", err);
+    }
+  };
+  loadLocales();
+}, []);
+
 
   useEffect(() => {
     const fetchTranslations = async () => {
@@ -200,7 +214,7 @@ export default function TranslationsAdmin() {
               className="md:col-span-2"
             />
             <Button variant="destructive" onClick={() => deleteTranslation(currentPath)}>
-              Delete
+              {t("admin.delete")}
             </Button>
           </div>
         )
@@ -348,7 +362,7 @@ export default function TranslationsAdmin() {
 
                   <Link href="/logout" className="flex items-center px-4 py-2 text-red-600 hover:bg-gray-100">
                     <LogOut className="h-4 w-4 mr-2" />
-                    <span>{t("common.logout")}</span>
+                    <p>{t("common.logout")}</p>
                   </Link>
                 </div>
               )}
@@ -358,8 +372,8 @@ export default function TranslationsAdmin() {
     <div className="container mx-auto py-8">
       <Card>
         <CardHeader>
-          <CardTitle>Translation Management</CardTitle>
-          <CardDescription>Edit and manage translations for your application</CardDescription>
+          <CardTitle>{t("admin.translationsManagement")}</CardTitle>
+          <CardDescription>{t("admin.editManage")}</CardDescription>
         </CardHeader>
         <CardContent>
           <Tabs value={activeLocale} onValueChange={setActiveLocale}>
@@ -373,20 +387,20 @@ export default function TranslationsAdmin() {
               </TabsList>
               <div className="flex gap-2">
                 <Button onClick={addLocale} className="bg-green-50 hover:bg-green-600 text-white">
-                  Add Language
+                  {t("admin.addLanguage")}
                 </Button>
                 <Button onClick={() => deleteLocale(activeLocale)} variant="destructive">
-                  Delete Language
+                  {t("admin.deleteLanguage")}
                 </Button>
                 <Button onClick={saveTranslations} disabled={isSaving} className="bg-green-50 hover:bg-green-600 text-white">
-                  {isSaving ? "Saving..." : "Save Changes"}
+                    {isSaving ? t("admin.saving") : t("admin.saveChanges")}
                 </Button>
               </div>
             </div>
 
             <div className="mb-6">
               <Input
-                placeholder="Search translations..."
+                placeholder={t("admin.searchTranslations")}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full"
@@ -395,17 +409,17 @@ export default function TranslationsAdmin() {
 
             <div className="mb-6 grid grid-cols-1 md:grid-cols-3 gap-4">
               <Input
-                placeholder="New key (e.g., 'auth.login')"
+                placeholder={t("admin.newKey")}
                 value={newKey}
                 onChange={(e) => setNewKey(e.target.value)}
               />
               <Input
-                placeholder="New value"
+                placeholder={t("admin.newValue")}
                 value={newValue}
                 onChange={(e) => setNewValue(e.target.value)}
               />
               <Button onClick={addTranslation} className="bg-green-50 hover:bg-green-600 text-white">
-                Add Translation
+                {t("admin.addTranslation")}
               </Button>
             </div>
 

@@ -33,7 +33,7 @@ export default function LanguageSelector() {
         aria-expanded={isOpen}
         aria-haspopup="true"
       >
-        <span className="font-semibold">{language}</span>
+        <p className="font-semibold">{language.toUpperCase()}</p>
         <svg
           width="16"
           height="16"

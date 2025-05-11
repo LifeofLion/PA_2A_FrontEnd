@@ -88,15 +88,15 @@ export function DashboardContent() {
                         date: "2025-04-05",
                       },
                     ].map((item) => (
-                      <tr key={item.id} className="hover:bg-gray-50">
-                        <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">{item.name}</td>
-                        <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">{item.firstName}</td>
+                        <tr key={`${item.name}-${item.firstName}`} className="hover:bg-gray-50">
+                        <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">{item.firstName}</td>
+                        <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">{item.name}</td>
                         <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">{item.address}</td>
                         <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">{item.account}</td>
                         <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
                           {new Date(item.date).toLocaleDateString()}
                         </td>
-                      </tr>
+                        </tr>
                     ))}
                   </tbody>
                 </table>
@@ -105,8 +105,8 @@ export function DashboardContent() {
           </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <StatCard title="Number of contract" value="83.9 K" change="+9.7 K this month" positive={true} />
-        <StatCard title="Numbers of the month" value="£ 76 K" change="+5.4% than last month" positive={true} />
+        <StatCard title={t("admin.numberContracts")} value="83.9 K" change="+9.7 K this month" positive={true} />
+        <StatCard title={t("admin.numberMonth")} value="£ 76 K" change="+5.4% than last month" positive={true} />
       </div>
     </div>
   )

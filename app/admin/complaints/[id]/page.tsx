@@ -56,7 +56,7 @@ export default function AnalyzeComplaintPage({ params }: AnalyzeComplaintPagePro
               <li>
                 <Link
                   href="/admin"
-                  className="flex items-center rounded-md bg-green-50 px-4 py-3 text-white"
+                  className="flex items-center rounded-md px-4 py-3 text-gray-700 hover:bg-gray-100"
                 >
                   <BarChart3 className="mr-3 h-5 w-5" />
                   <span>{t("admin.dashboard")}</span>
@@ -92,7 +92,7 @@ export default function AnalyzeComplaintPage({ params }: AnalyzeComplaintPagePro
               <li>
                 <Link
                   href="/admin/complaints"
-                  className="flex items-center rounded-md px-4 py-3 text-gray-700 hover:bg-gray-100"
+                  className="flex items-center rounded-md bg-green-50 px-4 py-3 text-white"
                 >
                   <Angry className="mr-3 h-5 w-5" />
                   <span>{t("admin.complaints")}</span>
