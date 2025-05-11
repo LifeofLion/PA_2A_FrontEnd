@@ -447,10 +447,10 @@
     "acceptThisDelivery": "Aceptar esta entrega",
     "noAnnouncementsAvailable": "No hay anuncios disponibles",
     "checkBackLater": "Vuelva más tarde para nuevas oportunidades de entrega",
-    "switchToClientAccount": "Cambiar a cuenta de cliente",
-    "pendingThanksTitle": "¡Gracias! Tu solicitud de cuenta de repartidor está pendiente.",
     "pendingMessageLine1": "¡Hemos recibido correctamente tu solicitud de cuenta de repartidor!",
     "pendingMessageLine2": "Nuestro equipo de verificación revisará tu solicitud y te informará por correo electrónico en un plazo de 24 horas.",
+    "switchToClientAccount": "Cambiar a cuenta de cliente",
+    "pendingThanksTitle": "¡Gracias! Tu solicitud de cuenta de repartidor está pendiente.",
     "by": "Por",
     "uploadIdAndLicence": "Suba su identificación y licencia",
     "idCard": "Tarjeta de identificación",
@@ -538,8 +538,8 @@
     "documentFormat": "Formato aceptado: .pdf",
     "browseFiles": "Explorar sus archivos",
     "pendingThanksTitle": "¡Gracias! Su servicio está pendiente de verificación.",
-    "pendingMessageLine1": "¡Hemos recibido su solicitud de servicio!",
-    "pendingMessageLine2": "Nuestro equipo de verificación revisará su solicitud y le informará por correo electrónico en un plazo de 24 horas.",
+    "pendingMessageLine1": "¡Hemos recibido tu solicitud para convertirte en proveedor de servicios!",
+    "pendingMessageLine2": "Nuestro equipo de verificación revisará tu solicitud y te informará por correo electrónico en un plazo de 24 horas.",
     "bookedOn": "Reservado el",
     "at": "a las",
     "intervention": "Sus próximas intervenciones",
@@ -597,8 +597,7 @@
     "editYourJustificativePieces": "Editar sus documentos justificativos",
     "pendingThanksTitle": "¡Gracias! Tu solicitud de cuenta de comerciante está pendiente.",
     "pendingMessageLine1": "¡Hemos recibido correctamente tu solicitud de cuenta de comerciante!",
-    "pendingMessageLine2": "Nuestro equipo de verificación revisará tu solicitud y te informará por correo electrónico en un plazo de 24 horas."
-
+    "pendingMessageLine2": "Nuestro equipo de verificación revisará tu solicitud y te llamará en 24 horas."
   },
   "contracts": {
     "contract": "Contrato",

@@ -423,6 +423,8 @@
 		"acceptThisDelivery": "Accept this delivery",
 		"noAnnouncementsAvailable": "No announcements available",
 		"checkBackLater": "Check back later for new delivery opportunities",
+		"pendingMessageLine1": "We have received your request to become a deliveryman!!",
+		"pendingMessageLine2": "Our verification team will review your request and inform you by email within 24 hours.",
 		"switchToClientAccount": "Switch to client account",
 		"by": "By",
 		"partialDelivery": "Partial delivery",
@@ -505,7 +507,7 @@
 		"documentFormat": "Accepted format: .pdf",
 		"browseFiles": "Browse your files",
 		"pendingThanksTitle": "Thank you! Your service is pending verification.",
-		"pendingMessageLine1": "We have received your service request!!",
+		"pendingMessageLine1": "We have received your become a service provider!!",
 		"pendingMessageLine2": "Our verification team will review your request and inform you by email within 24 hours.",
 		"bookedOn": "Booked on",
 		"at": "at",
@@ -561,7 +563,9 @@
 		"siretNumber": "SIRET Number",
 		"sirenNumber": "SIREN Number",
 		"enterSirenNumber": "Enter your SIREN number",
-		"editYourJustificativePieces": "Edit your supporting documents"
+		"editYourJustificativePieces": "Edit your supporting documents",
+		"pendingMessageLine1": "We have received your request to become a shopkeeper!!",
+		"pendingMessageLine2": "Our verification team will review your request and call you within 24 hours."
 	},
 	"contracts": {
 		"contract": "Contract",

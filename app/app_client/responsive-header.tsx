@@ -133,11 +133,40 @@ export default function ResponsiveHeader({ activePage }: HeaderProps) {
         }
 				break;
 			case 'register-shopkeeper':
-				path = '/register/shopkeeper';
+        try {
+          if (!user_id) {
+            console.error('User ID not available');
+            path = '/register/shopkeeper';
+            break;
+          }
+
+          const response = await fetch(
+            `${process.env.NEXT_PUBLIC_API_URL}/commercants/${user_id}/profile`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              credentials: "include",
+            }
+          )
+
+          const commercantData = await response.json();
+
+          if (commercantData.commercant && commercantData.commercant.verificationState == 'verified') {
+            path = '/app_shopkeeper';
+          } else if (commercantData.commercant && commercantData.commercant.verificationState == 'pending') {
+            path = '/documents-verification/pending-validation/shopkeeper';
+          } else {
+            path = '/register/shopkeeper';
+          }
+        } catch (error) {
+          console.error('Error fetching user data:', error);
+          path = '/register/shopkeeper';
+        }
 				break;
 			case 'register-service-provider':
 				try {
-          // Ensure user_id is available before making the API call
           if (!user_id) {
             console.error('User ID not available');
             path = '/register/service-provider';
@@ -387,7 +416,10 @@ export default function ResponsiveHeader({ activePage }: HeaderProps) {
 								<button
 									className='block px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left'
 									onClick={() =>
-										navigateTo('shopkeeper', true)
+										navigateTo(
+                      'register-shopkeeper', 
+                      true
+                    )
 									}
 								>
 									{t('common.shopkeeper')}

@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import {
@@ -21,9 +21,11 @@ import {
 } from "lucide-react"
 import { useLanguage } from "@/components/language-context"
 import LanguageSelector from "@/components/language-selector"
+import { userAgent } from "next/server"
 
 export default function DeliverymanDashboard() {
   const { t } = useLanguage()
+  const [first_name, setUserName] = useState("")
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
 
@@ -54,6 +56,30 @@ export default function DeliverymanDashboard() {
       bgColor: "bg-rose-50",
     },
   ]
+
+  useEffect(() => {
+		const token =
+			sessionStorage.getItem('authToken') ||
+			localStorage.getItem('authToken');
+		if (!token) return;
+
+		fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/me`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${token}`,
+			},
+			credentials: 'include',
+		})
+			.then((res) => {
+				if (!res.ok) throw new Error('Unauthorized');
+				return res.json();
+			})
+			.then((data) => {
+				setUserName(data.firstName);
+			})
+			.catch((err) => console.error('Auth/me failed:', err));
+	}, []);
 
   return (
     <div className="flex h-screen bg-gray-50">
@@ -156,7 +182,7 @@ export default function DeliverymanDashboard() {
                 className="flex items-center bg-green-50 text-white rounded-full px-4 py-1 hover:bg-green-400 transition-colors"
               >
                 <User className="h-5 w-5 mr-2" />
-                <span className="hidden sm:inline">Charlotte</span>
+                <span className="hidden sm:inline">{first_name}</span>
                 <ChevronDown className="h-4 w-4 ml-1" />
               </button>
 
