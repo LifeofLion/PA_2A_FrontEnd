@@ -61,10 +61,6 @@ export const messageService = {
 
 			const data = await response.json();
 
-			// Handle the response from /utilisateurs/all endpoint
-			// The endpoint likely returns an array directly or in a property
-			
-			// If data is an array directly
 			return data.users.map((user: any) => ({
 				id: user.id?.toString() || '1',
 				first_name: user.first_name || '2',

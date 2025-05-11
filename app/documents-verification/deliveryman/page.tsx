@@ -22,26 +22,53 @@ export default function DeliverymanDocumentsPage() {
     setFormData((prev) => ({ ...prev, [field]: file }))
   }
 
-  const areAllFieldsFilled = (): boolean => {
-    return Object.values(formData).every((value) => value !== null)
-  }
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setError("") // Réinitialiser l'erreur
-
-    if (!areAllFieldsFilled()) {
-      setError(t("auth.allFieldsRequired"))
-      return
-    }
+    setError("")
 
     setIsSubmitting(true)
 
     try {
-      // Simuler l'envoi des données
-      await new Promise((resolve) => setTimeout(resolve, 1500))
+      const token =
+        sessionStorage.getItem('authToken') ||
+        localStorage.getItem('authToken');
+      if (!token) return;
 
-      // Rediriger vers la page de pending-validation
+      const user = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/me`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        credentials: 'include',
+      })
+      const userData = await user.json()
+
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, '0');
+      const day = String(now.getDate()).padStart(2, '0');
+      const fileName = formData.idCard?.name || formData.drivingLicence?.name;
+      const extension = fileName ? fileName.split('.').pop() : '';
+      const file_name = `${year}${month}${day} - ${formData.idCard? 'Id Card' : 'Driving Licence'} - ${userData.firstName} ${userData.lastName}.${extension}`
+      console.log(file_name)
+
+      await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/justification-pieces/create`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            utilisateur_id: userData.id, 
+            document_type: formData.idCard? "idCard" : "drivingLicence",
+            file_path: file_name
+          }),
+          credentials: "include",
+        }
+      )
+
       router.push("/documents-verification/pending-validation/deliveryman")
     } catch (err) {
       console.error("Error submitting documents:", err)
@@ -65,6 +92,10 @@ export default function DeliverymanDocumentsPage() {
         )}
 
         <form onSubmit={handleSubmit} className="space-y-6">
+          <p className="text-gray-600 text-center mb-4">
+            {t("deliveryman.chooseOneDocument")}
+          </p>
+          
           {/* Carte d'identité */}
           <div>
             <label htmlFor="idCard" className="block text-gray-700 mb-2">
@@ -73,7 +104,9 @@ export default function DeliverymanDocumentsPage() {
             <div className="flex items-center space-x-4">
               <label
                 htmlFor="idCard"
-                className="flex items-center justify-center w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-md cursor-pointer hover:bg-gray-100"
+                className={`flex items-center justify-center w-full px-4 py-3 border rounded-md cursor-pointer ${
+                  formData.idCard ? 'bg-green-50 border-green-200' : 'bg-gray-50 border-gray-200'
+                } hover:bg-gray-100`}
               >
                 <Upload className="h-5 w-5 text-gray-500 mr-2" />
                 <span className="text-gray-500">
@@ -90,7 +123,7 @@ export default function DeliverymanDocumentsPage() {
               />
             </div>
           </div>
-
+          
           {/* Permis de conduire */}
           <div>
             <label htmlFor="drivingLicence" className="block text-gray-700 mb-2">
@@ -99,7 +132,9 @@ export default function DeliverymanDocumentsPage() {
             <div className="flex items-center space-x-4">
               <label
                 htmlFor="drivingLicence"
-                className="flex items-center justify-center w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-md cursor-pointer hover:bg-gray-100"
+                className={`flex items-center justify-center w-full px-4 py-3 border rounded-md cursor-pointer ${
+                  formData.drivingLicence ? 'bg-green-50 border-green-200' : 'bg-gray-50 border-gray-200'
+                } hover:bg-gray-100`}
               >
                 <Upload className="h-5 w-5 text-gray-500 mr-2" />
                 <span className="text-gray-500">
@@ -120,9 +155,11 @@ export default function DeliverymanDocumentsPage() {
           {/* Submit Button */}
           <button
             type="submit"
-            disabled={isSubmitting}
+            disabled={isSubmitting || !(formData.idCard || formData.drivingLicence)}
             className={`w-full py-3 rounded-md text-white ${
-              isSubmitting ? "bg-gray-300 cursor-not-allowed" : "bg-green-500 hover:bg-green-600"
+              isSubmitting || !(formData.idCard || formData.drivingLicence)
+                ? "bg-gray-300 cursor-not-allowed"
+                : "bg-green-500 hover:bg-green-600"
             }`}
           >
             {isSubmitting ? t("auth.submitting") : t("common.submit")}

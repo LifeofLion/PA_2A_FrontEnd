@@ -287,7 +287,7 @@ export default function MessagesPage() {
 					senderName: 'Charlotte',
 					content:
 						'Your dog is doing great! We just came back from a walk.',
-					timestamp: '2025-04-02T11:05:00',
+					timestamp: '2025-04-02T11:05:00', 	
 					isRead: true,
 					isFromUser: false,
 				},
