@@ -571,7 +571,8 @@
     "available": "Available",
     "editYourJustificativePieces": "Edit Your Supporting Documents",
     "editYourDocuments": "Edit Your Documents",
-    "uploadYourNewDocument": "Upload a new document as .pdf"
+    "uploadYourNewDocument": "Upload a new document as .pdf",
+    "reviewsCount": "reviews"
   },
   "status": {
     "pending": "Pending",
