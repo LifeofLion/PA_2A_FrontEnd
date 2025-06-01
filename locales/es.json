@@ -571,7 +571,8 @@
     "available": "Disponible",
     "editYourJustificativePieces": "Editar tus documentos justificativos",
     "editYourDocuments": "Editar tus documentos",
-    "uploadYourNewDocument": "Sube un nuevo documento en .pdf"
+    "uploadYourNewDocument": "Sube un nuevo documento en .pdf",
+    "reviewsCount": "aviso"
   },
   "status": {
     "pending": "Pendiente",
