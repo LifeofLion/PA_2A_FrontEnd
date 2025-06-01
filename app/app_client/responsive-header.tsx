@@ -84,52 +84,51 @@ export default function ResponsiveHeader({ activePage }: HeaderProps) {
 				break;
 			case 'register-delivery-man':
         try {
-          if (!user_id) {
-            console.error('User ID not available');
-            path = '/register/delivery-man';
-            break;
-          }
-          
-          const response = await fetch(
-            `${process.env.NEXT_PUBLIC_API_URL}/justification-pieces/user/${user_id}`,
-            {
-              method: "GET",
-              headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`,
-              },
-              credentials: "include",
-            }
-          );
-          
-          if (!response.ok) {
-            throw new Error(`API request failed with status ${response.status}`);
-          }
-          
-          const justificationPieceData = await response.json();
-          
-          if (justificationPieceData.justificationPieces && justificationPieceData.justificationPieces.length > 0) {
-            const hasVerified = justificationPieceData.justificationPieces.some(
-              (piece: any) => piece.verificationStatus === 'verified'
-            );
+			if (!user_id) {
+				console.error('User ID not available');
+				path = '/register/delivery-man';
+				break;
+			}
+			
+			const response = await fetch(
+				`${process.env.NEXT_PUBLIC_API_URL}/justification-pieces/user/${user_id}`,
+				{
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json",
+					"Authorization": `Bearer ${token}`,
+				},
+					credentials: "include",
+				}
+			);
+			
+			if (!response.ok) {
+				throw new Error(`API request failed with status ${response.status}`);
+			}
+
+			const justificationPieceData = await response.json();
+			if (justificationPieceData.justificationPieces && justificationPieceData.justificationPieces.length > 0) {
+				const hasVerified = justificationPieceData.justificationPieces.some(
+					(piece: any) => piece.verificationStatus === 'verified'
+				);
             
-            const hasPending = justificationPieceData.justificationPieces.some(
-              (piece: any) => piece.verificationStatus === 'pending'
-            );
+				const hasPending = justificationPieceData.justificationPieces.some(
+					(piece: any) => piece.verificationStatus === 'pending'
+				);
             
-            if (hasVerified) {
-              path = '/app_deliveryman';
-            } else if (hasPending) {
-              path = '/documents-verification/pending-validation/deliveryman';
-            } else {
-              path = '/register/delivery-man';
-            }
-          } else {
-            path = '/register/delivery-man';
-          }
+				if (hasVerified) {
+					path = '/app_deliveryman';
+				} else if (hasPending) {
+					path = '/documents-verification/pending-validation/deliveryman';
+				} else {
+					path = '/register/delivery-man';
+				}
+			} else {
+				path = '/register/delivery-man';
+			}
         } catch (error) {
-          console.error('Error fetching justification pieces:', error);
-          path = '/register/delivery-man';
+			console.error('Error fetching justification pieces:', error);
+			path = '/register/delivery-man';
         }
 				break;
 			case 'register-shopkeeper':
